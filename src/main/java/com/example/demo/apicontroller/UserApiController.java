@@ -135,7 +135,7 @@ public class UserApiController extends UtilController {
         }
         
         userFind.setEnabled(!userFind.isEnabled());
-        userService.save(userFind);
+        userService.saveWithoutContrain(userFind);
         //this.saveLog("/desactive-user", "Tentative d'activation/desactivation utilisateur userId = "+userId, "operation OK");
         return this.responseAPI("OK", "Success", null);
     }

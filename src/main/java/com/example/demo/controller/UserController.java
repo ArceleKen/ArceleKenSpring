@@ -120,7 +120,7 @@ public class UserController extends UtilController {
         }
         
         userFind.setEnabled(!userFind.isEnabled());
-        userService.save(userFind);
+        userService.saveWithoutContrain(userFind);
         this.saveLog("/desactive-user", "Tentative d'activation/desactivation utilisateur userId = "+userId, "operation OK");
         ra.addFlashAttribute("success","action effectuée !");
         return "redirect:/users";

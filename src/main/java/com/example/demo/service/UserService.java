@@ -9,6 +9,7 @@ public interface UserService {
 	List<User> findAll();
 	User findById(Long userId);
 	User save(User user);
+	User saveWithoutContrain(User user);
 	User update(List<Long> rolesId, User userDetails);
 	User getUserByUsername(String username);
 	

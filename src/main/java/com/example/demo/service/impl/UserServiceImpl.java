@@ -50,6 +50,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public User saveWithoutContrain(User user) {
+		return userRepository.save(user);
+	}
+	
+	@Override
 	@Transactional
 	public User update(List<Long> rolesId, User userDetails) {
 		User userFound = this.findById(userDetails.getId());

@@ -6,7 +6,7 @@
                 <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
                   <thead>
 	                  <tr >
-				          <th>Date</th>
+				          <!-- <th>Date</th> -->
 				          <th>nom</th>
 				          <th>description</th>
 	                  </tr>
@@ -14,7 +14,7 @@
                   <tbody>      
         			<c:forEach  items="${listpermissions}" var ="perm">	 
 	                  <tr>
-	                    <td>${perm.dateCreation}</td>
+	                    <%-- <td>${perm.dateCreation}</td> --%>
 	                    <td>${perm.name}</td>
 	                    <td>${perm.description}</td>
 	                  </tr>
