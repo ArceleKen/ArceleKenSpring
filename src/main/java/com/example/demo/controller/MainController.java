@@ -1,17 +1,25 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.demo.service.ApiCaller;
 
 
 @Controller
 public class MainController extends UtilController{
+	
+	@Autowired
+    private ApiCaller apiCaller;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model) {
@@ -23,6 +31,15 @@ public class MainController extends UtilController{
 	public String accessDenied(Model model) {
 	
 	    return "accessDenied";
+	}
+	
+	@RequestMapping(value = "/mytest", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> mytest() {
+		Map<String, Object> params = new LinkedHashMap<String, Object>();
+		params.put("userId", 4);
+		Map<String, Object> data = apiCaller.call("http://localhost:8081/myAppSB/api/desactive-user", params);
+	    return data;
 	}
 	
 	/*

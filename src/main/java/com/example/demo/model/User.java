@@ -1,45 +1,53 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
  
 @Entity
 @Table(name = "users")
-//@EntityListeners(AuditingEntityListener.class)
-public class User {
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class User implements Serializable {
  
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Basic
     @Column(length=30, nullable=false)
     private String name;
     
-    @Basic
     @Column(length=30, nullable=false, unique=true)
     private String username;
   
     //(fetch = FetchType.LAZY)
-    @Basic 
     @Column(length=255, nullable=false)
+    @JsonIgnore
     private String password;
     
-    @Basic
+    //@Basic
+    @Column(nullable=false)
     private boolean enabled;
     
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(updatable=false)
     @CreatedDate
     private Date dateCreation;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<UserRole> userRoles; //= new HashSet<>();
+    private Set<UserRole> userRoles = new HashSet<>();
 
     /*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -128,6 +136,16 @@ public class User {
             	return true;
 
     	return false;
+    }
+    
+    @JsonProperty("roles")
+    public Set<Role> roles() {
+    	Set<Role> roles = new HashSet<Role>();
+    	Set<UserRole> userRoles = this.userRoles;
+    	for (UserRole elt : userRoles) 
+    		roles.add(elt.getRole());
+
+    	return roles;
     }
     
     

@@ -36,7 +36,7 @@ public class LogServiceImpl implements LogService{
 	
 	@Override
 	public Log save(Log log) {
-		log.setCreatedAt(new Date());
+		//log.setCreatedAt(new Date());
 		return logRepository.save(log);
 	}
 	

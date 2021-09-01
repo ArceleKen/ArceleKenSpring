@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 28 août 2021 à 20:03
+-- Généré le : mer. 01 sep. 2021 à 19:44
 -- Version du serveur :  10.4.19-MariaDB
 -- Version de PHP : 7.3.28
 
@@ -24,34 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `bank_account`
---
-
-CREATE TABLE `bank_account` (
-  `ID` bigint(20) NOT NULL,
-  `FULL_NAME` varchar(128) NOT NULL,
-  `BALANCE` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `bank_account`
---
-
-INSERT INTO `bank_account` (`ID`, `FULL_NAME`, `BALANCE`) VALUES
-(1, 'Tom', 300),
-(2, 'Jerry', 4800),
-(3, 'Donald', 3000);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `logs`
 --
 
 CREATE TABLE `logs` (
   `id` bigint(20) NOT NULL,
   `created_at` datetime DEFAULT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` longtext DEFAULT NULL,
   `other_info` varchar(255) NOT NULL,
   `resource` varchar(50) NOT NULL,
   `user_id` bigint(20) DEFAULT NULL
@@ -95,7 +74,137 @@ INSERT INTO `logs` (`id`, `created_at`, `description`, `other_info`, `resource`,
 (40, '2021-08-28 17:29:29', 'envoi mail objet=Un test denvoi de mail avec pièce jointe, utilisant Spring Java | dest=arcelekenmene3@gmail.com | Cc=', 'Envoi OK', '/send-mail', 12),
 (41, '2021-08-28 17:49:48', 'envoi mail objet=Encore un test denvoi de mail avec pièce jointe, utilisant Spring Java | dest=arcelekenmene3@gmail.com | Cc=', 'Envoi OK', '/send-mail', 12),
 (42, '2021-08-28 17:54:57', 'envoi mail objet=Un autre test d\'envoi de mail avec pièce jointe, utilisant Spring Java | dest=arcelekenmene3@gmail.com | Cc=', 'Echec !', '/send-mail', 12),
-(43, '2021-08-28 18:10:43', 'envoi mail objet=Un vrai test d\'envoi de mail, utilisant Spring Java | dest=arcelekenmene3@gmail.com | Cc=', 'Envoi OK', '/send-mail', 12);
+(43, '2021-08-28 18:10:43', 'envoi mail objet=Un vrai test d\'envoi de mail, utilisant Spring Java | dest=arcelekenmene3@gmail.com | Cc=', 'Envoi OK', '/send-mail', 12),
+(44, '2021-08-29 00:25:22', 'listing de permissions ', 'OK', '/permissions', 12),
+(45, '2021-08-29 00:29:19', 'envoi mail objet=test sending mail spring | dest=arcele.kenmene@yahoo.fr | Cc=', 'Envoi OK', '/send-mail', 12),
+(46, '2021-08-29 00:31:47', 'Lister les utilisateurs', 'OK', '/users', 12),
+(47, '2021-08-29 00:31:57', 'listing de roles ', 'OK', '/roles', 12),
+(48, '2021-08-29 01:01:59', 'listing de roles ', 'OK', '/roles', 12),
+(49, '2021-08-29 01:03:14', 'tentative de creation role Role [id=15, name=One_test1, description=	                        that is one test for test to test for test role .... I want to see, dateCreation=Sun Aug 29 01:03:14 WAT 2021, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]', 'OK', '/create-role', 12),
+(50, '2021-08-29 01:03:14', 'listing de roles ', 'OK', '/roles', 12),
+(51, '2021-08-29 01:04:20', 'listing de roles ', 'OK', '/roles', 12),
+(52, '2021-08-29 01:04:34', 'tentative de supprssion role', 'OK', '/delete-role15', 12),
+(53, '2021-08-29 01:04:34', 'listing de roles ', 'OK', '/roles', 12),
+(54, '2021-08-30 00:06:30', 'Lister les utilisateurs', 'OK', '/users', 12),
+(55, '2021-08-30 00:06:35', 'Afficher details utilisateur', 'Operation OK', '/details-user12', 12),
+(56, '2021-08-30 00:15:05', 'Lister les utilisateurs', 'OK', '/users', 12),
+(57, '2021-08-30 00:15:20', 'Lister les utilisateurs', 'OK', '/users', 12),
+(58, '2021-08-30 00:15:34', 'Lister les utilisateurs', 'OK', '/users', 12),
+(59, '2021-08-30 00:15:43', 'Afficher details utilisateur', 'Operation OK', '/details-user4', 12),
+(60, '2021-08-30 00:15:49', 'Lister les utilisateurs', 'OK', '/users', 12),
+(61, '2021-08-30 00:15:51', 'Afficher details utilisateur', 'Operation OK', '/details-user12', 12),
+(62, '2021-08-30 00:16:01', 'Lister les utilisateurs', 'OK', '/users', 12),
+(63, '2021-08-30 00:16:08', 'Lister les utilisateurs', 'OK', '/users', 12),
+(64, '2021-08-30 00:16:19', 'Modifier info utilisateurUser [id=4, name=admin 1, username=admin1, password=, enabled=true, dateCreation=null, userRoles=[]]', 'OK', '/edit-user4', 12),
+(65, '2021-08-30 00:16:19', 'Lister les utilisateurs', 'OK', '/users', 12),
+(66, '2021-08-30 00:16:22', 'Afficher details utilisateur', 'Operation OK', '/details-user4', 12),
+(67, '2021-08-30 00:16:29', 'Lister les utilisateurs', 'OK', '/users', 12),
+(68, '2021-08-30 00:16:46', 'Modifier info utilisateurUser [id=4, name=admin 1, username=admin1, password=, enabled=true, dateCreation=null, userRoles=[UserRole [id=2, role=Role [id=10, name=role_test2, description=role test 2	                        , dateCreation=2021-08-25 10:42:03.0, permissions=[]]], UserRole [id=3, role=Role [id=11, name=role_test3, description=role test 3	                        , dateCreation=2021-08-25 10:42:22.0, permissions=[]]]]]', 'OK', '/edit-user4', 12),
+(69, '2021-08-30 00:16:46', 'Lister les utilisateurs', 'OK', '/users', 12),
+(70, '2021-08-30 00:16:48', 'Afficher details utilisateur', 'Operation OK', '/details-user4', 12),
+(71, '2021-08-30 00:16:53', 'Lister les utilisateurs', 'OK', '/users', 12),
+(72, '2021-08-30 00:17:22', 'Lister les utilisateurs', 'OK', '/users', 12),
+(73, '2021-08-30 00:17:27', 'Tentative d\'activation/desactivation utilisateur userId = 4', 'operation OK', '/desactive-user', 12),
+(74, '2021-08-30 00:17:27', 'Lister les utilisateurs', 'OK', '/users', 12),
+(75, '2021-08-30 00:17:36', 'Tentative d\'activation/desactivation utilisateur userId = 4', 'operation OK', '/desactive-user', 12),
+(76, '2021-08-30 00:17:36', 'Lister les utilisateurs', 'OK', '/users', 12),
+(77, '2021-08-30 00:19:26', 'listing de roles ', 'OK', '/roles', 12),
+(78, '2021-08-30 00:19:41', 'listing de roles ', 'OK', '/roles', 12),
+(79, '2021-08-30 00:20:02', 'tentative de modification role Role [id=14, name=Manage_sending_mail, description=	                        		              Role pour Gérer l\'envoi des mails          \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=16, name=details_role, description=afficher les details d\'un role, dateCreation=2021-08-26 13:25:00.0], Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0], Role [id=18, name=listing_permissions, description=Pour lister tous les autorisations (ou permissions) du système, dateCreation=2021-08-26 13:25:00.0]]]', 'OK', '/edit-role14', 12),
+(80, '2021-08-30 00:20:02', 'listing de roles ', 'OK', '/roles', 12),
+(81, '2021-08-30 00:20:19', 'tentative de modification role Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]', 'OK', '/edit-role14', 12),
+(82, '2021-08-30 00:20:19', 'listing de roles ', 'OK', '/roles', 12),
+(83, '2021-08-30 00:20:32', 'listing de roles ', 'OK', '/roles', 12),
+(84, '2021-08-30 00:26:38', 'listing de roles ', 'OK', '/roles', 12),
+(85, '2021-08-30 00:27:09', 'listing de roles ', 'OK', '/roles', 12),
+(86, '2021-08-30 00:27:26', 'listing de roles ', 'OK', '/roles', 12),
+(87, '2021-08-30 00:27:47', 'tentative de modification role Role [id=13, name=role_test_5, description=	                        		                        		                        		                        role test 5\r\n	                        \r\n	                        \r\n	                        , dateCreation=2021-08-25 10:43:20.0, permissions=[Role [id=10, name=enable_or_disable_user, description=pour activer ou désactiver des utilisateurs, dateCreation=2021-08-26 13:25:00.0], Role [id=8, name=listing_user, description=autorisation de lister les utilisateurs, dateCreation=2021-08-26 13:25:00.0]]]', 'OK', '/edit-role13', 12),
+(88, '2021-08-30 00:27:47', 'listing de roles ', 'OK', '/roles', 12),
+(89, '2021-08-30 00:27:57', 'listing de roles ', 'OK', '/roles', 12),
+(90, '2021-08-30 00:28:07', 'listing de roles ', 'OK', '/roles', 12),
+(91, '2021-08-30 00:28:12', 'tentative de supprssion role', 'OK', '/delete-role13', 12),
+(92, '2021-08-30 00:28:12', 'listing de roles ', 'OK', '/roles', 12),
+(93, '2021-08-30 00:28:22', 'listing de roles ', 'OK', '/roles', 12),
+(94, '2021-08-30 00:29:04', 'listing de roles ', 'OK', '/roles', 12),
+(95, '2021-08-30 00:29:22', 'Lister les utilisateurs', 'OK', '/users', 12),
+(96, '2021-08-30 00:29:34', 'Modifier info utilisateurUser [id=4, name=admin 1, username=admin1, password=, enabled=true, dateCreation=null, userRoles=[UserRole [id=4, role=Role [id=10, name=role_test2, description=role test 2	                        , dateCreation=2021-08-25 10:42:03.0, permissions=[]]], UserRole [id=5, role=Role [id=12, name=role_test4, description=role test 4	                        , dateCreation=2021-08-25 10:42:45.0, permissions=[]]]]]', 'OK', '/edit-user4', 12),
+(97, '2021-08-30 00:29:34', 'Lister les utilisateurs', 'OK', '/users', 12),
+(98, '2021-08-30 00:29:37', 'Afficher details utilisateur', 'Operation OK', '/details-user4', 12),
+(99, '2021-08-30 00:29:41', 'Lister les utilisateurs', 'OK', '/users', 12),
+(100, '2021-08-30 00:29:49', 'Modifier info utilisateurUser [id=4, name=admin 1, username=admin1, password=, enabled=true, dateCreation=null, userRoles=[UserRole [id=9, role=Role [id=12, name=role_test4, description=role test 4	                        , dateCreation=2021-08-25 10:42:45.0, permissions=[]]], UserRole [id=7, role=Role [id=10, name=role_test2, description=role test 2	                        , dateCreation=2021-08-25 10:42:03.0, permissions=[]]], UserRole [id=8, role=Role [id=11, name=role_test3, description=role test 3	                        , dateCreation=2021-08-25 10:42:22.0, permissions=[]]]]]', 'OK', '/edit-user4', 12),
+(101, '2021-08-30 00:29:49', 'Lister les utilisateurs', 'OK', '/users', 12),
+(102, '2021-08-30 00:29:53', 'Afficher details utilisateur', 'Operation OK', '/details-user4', 12),
+(103, '2021-08-30 00:29:57', 'Lister les utilisateurs', 'OK', '/users', 12),
+(104, '2021-08-30 00:30:04', 'listing de roles ', 'OK', '/roles', 12),
+(105, '2021-08-30 00:30:20', 'tentative de supprssion role', 'OK', '/delete-role10', 12),
+(106, '2021-08-30 00:30:20', 'listing de roles ', 'OK', '/roles', 12),
+(107, '2021-08-30 00:30:27', 'Lister les utilisateurs', 'OK', '/users', 12),
+(108, '2021-08-30 00:30:38', 'listing de roles ', 'OK', '/roles', 12),
+(109, '2021-08-30 00:32:31', 'tentative de modification role Role [id=12, name=role_test4, description=	                        	role test 4	                        \r\n	                        , dateCreation=2021-08-25 10:42:45.0, permissions=[Role [id=11, name=details_user, description=Pour voir les details sur les informations des utilisateurs, dateCreation=2021-08-26 13:25:00.0], Role [id=9, name=create_user, description=pour créer des utilisateurs, dateCreation=2021-08-26 13:25:00.0], Role [id=8, name=listing_user, description=autorisation de lister les utilisateurs, dateCreation=2021-08-26 13:25:00.0]]]', 'OK', '/edit-role12', 12),
+(110, '2021-08-30 00:32:31', 'listing de roles ', 'OK', '/roles', 12),
+(111, '2021-08-30 00:32:41', 'tentative de supprssion role', 'OK', '/delete-role12', 12),
+(112, '2021-08-30 00:32:41', 'listing de roles ', 'OK', '/roles', 12),
+(113, '2021-08-30 00:32:49', 'Lister les utilisateurs', 'OK', '/users', 12),
+(114, '2021-08-30 00:32:59', 'Afficher details utilisateur', 'Operation OK', '/details-user4', 12),
+(115, '2021-08-30 00:33:02', 'Lister les utilisateurs', 'OK', '/users', 12),
+(116, '2021-08-30 00:33:26', 'Lister les utilisateurs', 'OK', '/users', 12),
+(117, '2021-08-30 00:37:12', 'listing de permissions ', 'OK', '/permissions', 12),
+(118, '2021-08-30 00:39:04', 'listing de roles ', 'OK', '/roles', 12),
+(119, '2021-08-30 01:13:48', 'Lister les utilisateurs', 'OK', '/users', 12),
+(120, '2021-08-30 01:15:59', 'Tentative de creation utilisateur user = User [id=13, name=user Test, username=usertest, password=, enabled=false, dateCreation=Mon Aug 30 01:15:59 WAT 2021, userRoles=null]', 'Operation OK', '/create-user', 12),
+(121, '2021-08-30 01:15:59', 'Lister les utilisateurs', 'OK', '/users', 12),
+(122, '2021-08-30 01:16:24', 'Tentative d\'activation/desactivation utilisateur userId = 13', 'operation OK', '/desactive-user', 12),
+(123, '2021-08-30 01:16:24', 'Lister les utilisateurs', 'OK', '/users', 12),
+(124, '2021-08-30 01:22:05', 'Lister les utilisateurs', 'OK', '/users', 12),
+(125, '2021-08-30 01:22:15', 'Lister les utilisateurs', 'OK', '/users', 12),
+(126, '2021-08-30 01:22:39', 'Modifier info utilisateurUser [id=13, name=user Test, username=usertest, password=, enabled=true, dateCreation=2021-08-30 01:15:59.0, userRoles=[UserRole [id=12, role=Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]]]]', 'OK', '/edit-user13', 12),
+(127, '2021-08-30 01:22:39', 'Lister les utilisateurs', 'OK', '/users', 12),
+(128, '2021-08-30 01:27:39', 'Lister les utilisateurs', 'OK', '/users', 12),
+(129, '2021-08-30 01:27:53', 'Modifier info utilisateurUser [id=13, name=user Test, username=usertest, password=, enabled=true, dateCreation=2021-08-30 01:15:59.0, userRoles=[UserRole [id=13, role=Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]]]]', 'OK', '/edit-user13', 12),
+(130, '2021-08-30 01:27:54', 'Lister les utilisateurs', 'OK', '/users', 12),
+(131, '2021-08-30 01:28:25', 'Lister les utilisateurs', 'OK', '/users', 12),
+(132, '2021-08-30 01:28:57', 'Tentative de creation utilisateur user = User [id=14, name=user Test2, username=usertest2, password=, enabled=false, dateCreation=Mon Aug 30 01:28:56 WAT 2021, userRoles=null]', 'Operation OK', '/create-user', 12),
+(133, '2021-08-30 01:28:57', 'Lister les utilisateurs', 'OK', '/users', 12),
+(134, '2021-08-30 01:41:03', 'Lister les utilisateurs', 'OK', '/users', 12),
+(135, '2021-08-30 01:41:35', 'Modifier info utilisateurUser [id=13, name=user Test, username=usertest, password=, enabled=true, dateCreation=2021-08-30 01:15:59.0, userRoles=[UserRole [id=14, role=Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]]]]', 'OK', '/edit-user13', 12),
+(136, '2021-08-30 01:41:35', 'Lister les utilisateurs', 'OK', '/users', 12),
+(137, '2021-08-30 01:48:03', 'Lister les utilisateurs', 'OK', '/users', 12),
+(138, '2021-08-30 01:48:27', 'Modifier info utilisateurUser [id=13, name=user Test, username=usertest, password=, enabled=true, dateCreation=2021-08-30 01:15:59.0, userRoles=[UserRole [id=15, role=Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]]]]', 'OK', '/edit-user13', 12),
+(139, '2021-08-30 01:48:27', 'Lister les utilisateurs', 'OK', '/users', 12),
+(140, '2021-08-30 01:55:13', 'Lister les utilisateurs', 'OK', '/users', 12),
+(141, '2021-08-30 01:55:36', 'Modifier info utilisateurUser [id=13, name=user Test, username=usertest, password=, enabled=true, dateCreation=2021-08-30 01:15:59.0, userRoles=[UserRole [id=16, role=Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]]]]', 'OK', '/edit-user13', 12),
+(142, '2021-08-30 01:55:36', 'Lister les utilisateurs', 'OK', '/users', 12),
+(143, '2021-08-30 02:03:13', 'envoi mail objet=testons sending mail spring | dest=arcele.kenmene@yahoo.fr | Cc=', 'Envoi OK', '/send-mail', 13),
+(144, '2021-08-30 02:16:10', 'Lister les utilisateurs', 'OK', '/users', 12),
+(145, '2021-08-30 02:16:39', 'Modifier info utilisateurUser [id=13, name=user Test, username=usertest, password=, enabled=true, dateCreation=2021-08-30 01:15:59.0, userRoles=[UserRole [id=17, role=Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]]]]', 'OK', '/edit-user13', 12),
+(146, '2021-08-30 02:16:39', 'Lister les utilisateurs', 'OK', '/users', 12),
+(147, '2021-08-30 02:17:26', 'Tentative de creation utilisateur user = User [id=15, name=user Test3, username=usertest3, password=, enabled=false, dateCreation=Mon Aug 30 02:17:26 WAT 2021, userRoles=null]', 'Operation OK', '/create-user', 12),
+(148, '2021-08-30 02:17:26', 'Lister les utilisateurs', 'OK', '/users', 12),
+(149, '2021-08-30 02:21:43', 'Lister les utilisateurs', 'OK', '/users', 12),
+(150, '2021-08-30 02:23:52', 'Lister les utilisateurs', 'OK', '/users', 12),
+(151, '2021-08-30 02:24:10', 'Modifier info utilisateurUser [id=14, name=user Test2, username=usertest2, password=$2a$10$1uoINV5/MVOSQsm4VOLdMeVbi8ZyCM.gP9llruGw3b8B6xbuG.gPG, enabled=false, dateCreation=2021-08-30 01:28:57.0, userRoles=[]]', 'OK', '/edit-user14', 12),
+(152, '2021-08-30 02:24:10', 'Lister les utilisateurs', 'OK', '/users', 12),
+(153, '2021-08-30 02:27:56', 'Lister les utilisateurs', 'OK', '/users', 12),
+(154, '2021-08-30 02:28:00', 'listing de roles ', 'OK', '/roles', 12),
+(155, '2021-08-30 02:28:34', 'Lister les utilisateurs', 'OK', '/users', 12),
+(156, '2021-08-30 02:28:56', 'Modifier info utilisateurUser [id=13, name=user Test, username=usertest, password=$2a$10$nmzur9GWb6J/Um/1rXVXGeGpbru27aRq6/rBB3/zo9O5WM5cniuUG, enabled=true, dateCreation=2021-08-30 01:15:59.0, userRoles=[UserRole [id=18, role=Role [id=14, name=Manage_sending_mail, description=	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        , dateCreation=2021-08-29 00:34:48.0, permissions=[Role [id=20, name=send_mail, description=Pour envoyer des mails, dateCreation=2021-08-28 20:02:47.0]]]]]]', 'OK', '/edit-user13', 12),
+(157, '2021-08-30 02:28:56', 'Lister les utilisateurs', 'OK', '/users', 12),
+(158, '2021-08-30 02:29:41', 'Modifier info utilisateurUser [id=12, name=super admin , username=bigadmin, password=$2a$10$KxvM/SpZ1X/cB8WNei8Nl.m545LQI/KFEPAiLUqgkzq5asIqNlXf2, enabled=true, dateCreation=2021-08-25 10:49:55.0, userRoles=[UserRole [id=1, role=Role [id=9, name=superadmin, description=Role du superadmin, dateCreation=2021-08-25 10:41:38.0, permissions=[Role [id=7, name=superadmin, description=autorisation du superadmin, pour celui qui a tous les droit dans le système, dateCreation=2021-08-26 13:25:00.0]]]]]]', 'OK', '/edit-user12', 12),
+(159, '2021-08-30 02:29:41', 'Lister les utilisateurs', 'OK', '/users', 12),
+(160, '2021-08-30 02:30:23', 'Lister les utilisateurs', 'OK', '/users', 12),
+(161, '2021-08-30 02:30:33', 'Tentative d\'activation/desactivation utilisateur userId = 13', 'operation OK', '/desactive-user', 12),
+(162, '2021-08-30 02:30:33', 'Lister les utilisateurs', 'OK', '/users', 12),
+(163, '2021-08-30 09:19:28', 'Lister les utilisateurs', 'OK', '/users', 12),
+(164, '2021-08-31 18:23:42', 'Lister les utilisateurs', 'OK', '/users', 12),
+(165, '2021-08-31 18:24:44', 'Tentative de creation utilisateur user = User [id=16, name=mytest0, username=mytest0, password=$2a$10$ja0FpcxJMrg5lvNzfQHnk.OXhJFScM/hvGz/0naVDkvJ8fpljApCS, enabled=false, dateCreation=Tue Aug 31 18:24:44 WAT 2021, userRoles=null]', 'Operation OK', '/create-user', 12),
+(166, '2021-08-31 18:24:44', 'Lister les utilisateurs', 'OK', '/users', 12),
+(167, '2021-08-31 18:29:59', 'Lister les utilisateurs', 'OK', '/users', 12),
+(168, '2021-08-31 18:32:50', 'Afficher details utilisateur', 'Operation OK', '/details-user12', 12),
+(169, '2021-09-01 16:01:59', 'Lister les utilisateurs', 'OK', '/users', 12),
+(170, '2021-09-01 16:02:35', 'Modifier info utilisateurUser [id=27, name=User create test 10 ... API , username=usertestapi10, password=$2a$10$Y7T1mg4xFR1scRsR49M.kOg9S.t8ypLiW7oqWahADWjGrtTFfLtvW, enabled=true, dateCreation=2021-09-01 15:44:11.0, userRoles=[UserRole [id=31, role=Role [id=9, name=superadmin, description=Role du superadmin, dateCreation=2021-08-25 10:41:38.0, permissions=[Role [id=7, name=superadmin, description=autorisation du superadmin, pour celui qui a tous les droit dans le système, dateCreation=2021-08-26 13:25:00.0]]]], UserRole [id=30, role=Role [id=11, name=role_test3, description=role test 3	                        , dateCreation=2021-08-25 10:42:22.0, permissions=[]]]]]', 'OK', '/edit-user27', 12),
+(171, '2021-09-01 16:02:35', 'Lister les utilisateurs', 'OK', '/users', 12),
+(172, '2021-09-01 16:02:43', 'Afficher details utilisateur', 'Operation OK', '/details-user27', 12),
+(173, '2021-09-01 16:02:50', 'Lister les utilisateurs', 'OK', '/users', 12);
 
 -- --------------------------------------------------------
 
@@ -149,10 +258,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `date_creation`, `name`, `description`) VALUES
 (9, '2021-08-25 10:41:38', 'superadmin', 'Role du superadmin'),
-(10, '2021-08-25 10:42:03', 'role_test2', 'role test 2	                        '),
 (11, '2021-08-25 10:42:22', 'role_test3', 'role test 3	                        '),
-(12, '2021-08-25 10:42:45', 'role_test4', 'role test 4	                        '),
-(13, '2021-08-25 10:43:20', 'role_test_5', '	                        		                        		                        role test 5\r\n	                        \r\n	                        ');
+(14, '2021-08-29 00:34:48', 'Manage_sending_mail', '	                        		                        		              Role pour Gérer l\'envoi des mails          \r\n	                        \r\n	                        ');
 
 -- --------------------------------------------------------
 
@@ -170,7 +277,8 @@ CREATE TABLE `roles_permissions` (
 --
 
 INSERT INTO `roles_permissions` (`role_id`, `permission_id`) VALUES
-(9, 7);
+(9, 7),
+(14, 20);
 
 -- --------------------------------------------------------
 
@@ -192,8 +300,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `date_creation`, `enabled`, `password`, `username`, `name`) VALUES
-(4, NULL, b'1', '$2a$10$85APdiKnih5w6mTcFf9Cn.L8q9HyBPBmAl2NSlDwIi2ucTUytMUD2', 'admin1', 'admin 1'),
-(12, '2021-08-25 10:49:55', b'1', '$2a$10$KxvM/SpZ1X/cB8WNei8Nl.m545LQI/KFEPAiLUqgkzq5asIqNlXf2', 'bigadmin', 'admin supreme');
+(4, NULL, b'0', '$2a$10$pLJHRRipTOsQYOCAunWZi.L/2sKJIbaTlHeR2xhwaacZlSsFTiwSq', 'admin1', 'admin 1'),
+(12, '2021-08-25 10:49:55', b'1', '$2a$10$KxvM/SpZ1X/cB8WNei8Nl.m545LQI/KFEPAiLUqgkzq5asIqNlXf2', 'bigadmin', 'super admin '),
+(13, '2021-08-30 01:15:59', b'0', '$2a$10$FPai/bs81P5wXLEYjE3EK.LciSUXGMbH5DFVqAj4ZdKunEJj91It.', 'usertest', 'user Test'),
+(16, '2021-08-31 18:24:44', b'0', '$2a$10$ja0FpcxJMrg5lvNzfQHnk.OXhJFScM/hvGz/0naVDkvJ8fpljApCS', 'mytest0', 'mytest0'),
+(17, '2021-09-01 14:42:45', b'0', '$2a$10$WLLXYmqpE.mFpPTKgYH2T..0J/LyU/4BV.33YjuFrFK5g520MwA2C', 'usertestapi', 'User create test API'),
+(18, '2021-09-01 14:46:45', b'0', '$2a$10$6.VcVHDDWd/BiDsceXAireM31xofrC8xxY.Yqznmpg4c/KvlHh6NS', 'usertestapi1', 'User create test 1 API '),
+(19, '2021-09-01 14:50:36', b'0', '$2a$10$quIhb4CxlQVvB0D0mwFrQOEEiF.Y78jAzvzcvYvjrk/YuOHXZmXui', 'usertestapi2', 'User create test 2 API '),
+(20, '2021-09-01 14:55:55', b'0', '$2a$10$Xq/2nMA2DMOh3P7s3gn0neqQQVP4K0ZwdBWrorBA634XmNVzUL8hi', 'usertestapi3', 'User create test 3 API '),
+(21, '2021-09-01 15:03:37', b'0', '$2a$10$Uw8tNr4TmyGcxFI7oyU2ou4sdGfuxM9KgU9TXO7XAeYgcaiRnzb7m', 'usertestapi4', 'User create test 4 API '),
+(22, '2021-09-01 15:09:54', b'0', '$2a$10$5ds5iNIGHwlLd8nVeGuRf.kwkT8LJFIAK72r4i0EQSQQFiSaiMbGa', 'usertestapi5', 'User create test 5 API '),
+(23, '2021-09-01 15:18:42', b'0', '$2a$10$GN6o9EGVyjQ1KMXLCRvd9uED6.3lRqexuR/1Y/yl9.yTc.4tpzgMW', 'usertestapi6', 'User create test 6 API '),
+(24, '2021-09-01 15:40:34', b'0', '$2a$10$4kVpkGL4/cv2.piwrgKhU.EginwDbM/rsl1.GP6p8N.zeg5hVvrca', 'usertestapi7', 'User create test 7 API '),
+(25, '2021-09-01 15:41:00', b'0', '$2a$10$GtitMIR7jxALeZWfisBWF.5RZ0adVTQKozMfV.5RAQZKxPOEoD0QW', 'usertestapi8', 'User create test 8 API '),
+(26, '2021-09-01 15:43:36', b'0', '$2a$10$y8yqbQFlczpsdNkkp7euE.qEBRwJxebYaCfiu//LqnrJeAdO8B0XS', 'usertestapi9', 'User create test 9 API '),
+(27, '2021-09-01 15:44:11', b'1', '$2a$10$3owrHzosZI3dpeZb.imid.RoG2lhUpKi/vErwWt.lHI0ijOJp9qfW', 'usertestapi10', 'User create test 10 ... API ');
 
 -- --------------------------------------------------------
 
@@ -202,26 +323,30 @@ INSERT INTO `users` (`id`, `date_creation`, `enabled`, `password`, `username`, `
 --
 
 CREATE TABLE `users_roles` (
-  `user_id` bigint(20) NOT NULL,
-  `role_id` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint(20) NOT NULL,
+  `role_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users_roles`
 --
 
-INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES
-(12, 9);
+INSERT INTO `users_roles` (`id`, `role_id`, `user_id`) VALUES
+(19, 14, 13),
+(20, 9, 12),
+(21, 11, 16),
+(22, 11, 22),
+(23, 11, 23),
+(24, 14, 23),
+(25, 11, 26),
+(26, 14, 26),
+(35, 11, 27),
+(36, 9, 27);
 
 --
 -- Index pour les tables déchargées
 --
-
---
--- Index pour la table `bank_account`
---
-ALTER TABLE `bank_account`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Index pour la table `logs`
@@ -261,8 +386,9 @@ ALTER TABLE `users`
 -- Index pour la table `users_roles`
 --
 ALTER TABLE `users_roles`
-  ADD PRIMARY KEY (`user_id`,`role_id`),
-  ADD KEY `FKj6m8fwv7oqv74fcehir1a9ffy` (`role_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKj6m8fwv7oqv74fcehir1a9ffy` (`role_id`),
+  ADD KEY `FK2o0jvgh89lemvvo17cbqvdxaa` (`user_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -272,7 +398,7 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT pour la table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT pour la table `permissions`
@@ -284,13 +410,19 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT pour la table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT pour la table `users_roles`
+--
+ALTER TABLE `users_roles`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Contraintes pour les tables déchargées

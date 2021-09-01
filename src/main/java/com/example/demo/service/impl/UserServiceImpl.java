@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User save(User user) {
-		user.setDateCreation(new Date());
-		System.out.println("### pass user: "+user.getPassword());
+		//user.setDateCreation(new Date());
+		//System.out.println("### pass user: "+user.getPassword());
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return userRepository.save(user);
 	}

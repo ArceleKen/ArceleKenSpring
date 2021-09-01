@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -8,17 +9,19 @@ import java.util.Set;
 import javax.persistence.*;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "permissions")
-//@EntityListeners(AuditingEntityListener.class)
-public class Permission {
+@EntityListeners(AuditingEntityListener.class)
+public class Permission implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Basic
     @Column(length=100, nullable=false, unique=true)
     private String name;
     
@@ -26,6 +29,7 @@ public class Permission {
     @Column(name="description", length=512)
     private String description;
     
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(updatable=false)
     @CreatedDate

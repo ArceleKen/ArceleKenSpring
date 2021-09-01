@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,4 +33,20 @@ public abstract class UtilController {
 		Log log = new Log(resource, description, otherInfo, user);
 		log = logService.save(log);
     }
+	
+	public Map<String, Object> responseAPI(String status, String message, Object data){
+		Map<String, Object> resp = new LinkedHashMap<String, Object>();
+		resp.put("status", status);
+		resp.put("message", message);
+		resp.put("data", data);
+		return resp;
+	}
+	
+	public Map<String, Object> responseAPI(String message){
+		Map<String, Object> resp = new LinkedHashMap<String, Object>();
+		resp.put("status", "KO");
+		resp.put("message", message);
+		resp.put("data", null);
+		return resp;
+	}
 }
