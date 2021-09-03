@@ -16,8 +16,8 @@ public class MailConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
  
-        mailSender.setUsername("arcele.worldvoice@gmail.com");
-        mailSender.setPassword("kEneArc.world@2019");
+        mailSender.setUsername("arcelekenmenedev@gmail.com");
+        mailSender.setPassword("swiufmafmldrppno");
  
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
