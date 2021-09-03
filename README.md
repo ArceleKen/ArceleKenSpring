@@ -3,6 +3,6 @@ projet spring boot , spring data jpa, spring-security, integrant la gestion des 
 
 Utilisation
 importer le projet sur eclipse
-importer la BD MySQL 
+importer la BD MySQL (springlearn.sql)
 
 Executer l'application et tester avec le compte login= bigadmin et password=bigadmin
