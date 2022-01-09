@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+                <table id="example2" class="table table-striped table-bordered table-hover display" style="width:100%">
                   <thead>
 	                  <tr >
 	                  	<th>

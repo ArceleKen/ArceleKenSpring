@@ -57,11 +57,11 @@
 	              	<div class="row">
 	                  <div class="form-group col-md-4">
 	                    <label for="datefrom">Début </label>
-	                    <input type="datetime" class="form-control" name="datefrom" value="${dataSearch.datefrom}" id="datefrom" placeholder="AAAA-YY-JJ H:m:s" required="required">
+	                    <input type="text" class="form-control datetimepicker" name="datefrom" value="${dataSearch.datefrom}" id="datefrom" placeholder="AAAA-MM-JJ H:m:s" required="required">
 	                  </div>
 	                  <div class="form-group col-md-4">
 	                    <label for="dateto">Fin</label>
-	                    <input type="datetime" class="form-control" name="dateto" value="${dataSearch.dateto}" id="dateto" placeholder="AAAA-YY-JJ H:m:s" required="required">
+	                    <input type="text" class="form-control datetimepicker" name="dateto" value="${dataSearch.dateto}" id="dateto" placeholder="AAAA-MM-JJ H:m:s" required="required">
 	                  </div>
 	                  <div class="form-group col-md-4">
 	                    <label for="user_id">Utilisateur</label>

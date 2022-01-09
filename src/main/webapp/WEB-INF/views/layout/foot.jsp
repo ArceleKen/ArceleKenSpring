@@ -2,8 +2,7 @@
 
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="dist/js/jquery.dataTables.min.js"></script>
-<!-- jQuery -->
-<script src="<c:url value = "/"/>plugins/jquery/jquery.min.js"></script>
+<script src="dist/js/dataTables.bootstrap4.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -37,10 +36,16 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 
+<script src="dist/js/jquery.datetimepicker.full.min.js"></script>
+<script src="dist/js/jquery.datetimepicker.min.js"></script>
+
 <script type="text/javascript">
 
  $(document).ready( function () {
     $('#example2').DataTable();
+    $('.datetimepicker').datetimepicker({
+    	format:'Y-m-d H:i:s',
+    });
 } );
  
 </script>
